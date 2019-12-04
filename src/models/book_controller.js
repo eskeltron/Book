@@ -3,34 +3,62 @@ const uuid = require('uuid/v4')
 const fs = require('fs')
 const path = require('path')
 
-async function save(req, res, callback) {
-    const { title, author, description, status } = req.body
-    const book = Book({
-        title,
-        author,
-        id: uuid(),
-        description,
-        status
-    })
-
-    if (req.file) {
-        const { filename } = req.file
-        book.setImgUrl(filename)
+async function save(req, res) {
+    try {
+        const { title, author, description, status } = req.body
+        const book = Book({
+            title,
+            author,
+            id: uuid(),
+            description,
+            status
+        })
+        if (req.file) {
+            const { filename } = req.file
+            book.setImgUrl(filename)
+        }
+        await book.save()
+        res.render('new-entry', {
+            succesfull: 1
+        })
     }
-    await book.save(callback)
+    catch (e) {
+        res.render('new-entry', {
+            succesfull: -1
+        })
+    }
+
 }
-async function edit(req, res, callback) {
-    const { title, author,id, description, status } = req.body
-    await eliminarFoto(id)
-    const { filename } = req.file
-    await Book.updateOne({ id}, {
-        title,
-        author,
-        id,
-        image:`http://${process.env.APP_HOST}:${process.env.APP_PORT}/public/${filename}`,
-        description,
-        status
-    }, callback)
+async function edit(req, res) {
+    try {
+        const { title, author, id, description, status } = req.body
+        await eliminarFoto(id)
+        const { filename } = req.file
+        await Book.updateOne({ id }, {
+            title,
+            author,
+            id,
+            image: `http://${process.env.APP_HOST}:${process.env.APP_PORT}/public/${filename}`,
+            description,
+            status
+        })
+        let book = await Book.find({}, (err, book) => {
+            if (err) { throw new Error(err) }
+        })
+        res.render('edit', {
+            edit: 1,
+            book
+        })
+    }
+    catch (e) {
+        if (bookWanted.n == 0) {
+            res.render('edit', {
+                edit: -1,
+                book
+            })
+            return
+        }
+    }
 }
 async function del(idBuscado, callback) {
     await eliminarFoto(idBuscado)

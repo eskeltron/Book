@@ -32,3 +32,10 @@ body {
     text-align: right;
     top: 0;
 }
+#image{
+    float: left;
+}
+#imageEdit{
+    width: 45%;
+    margin-left: 20px;
+}

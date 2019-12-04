@@ -3,6 +3,7 @@ const router = Router()
 let Book = require('../models/book')
 const bookController = require('../models/book_controller')
 const upload = require('../libs/storage')
+const ejs = require('ejs')
 
 router.get('/', async function (req, res) {
     let consulta = req.query.search
@@ -13,7 +14,7 @@ router.get('/', async function (req, res) {
             res.render('index.ejs', {
                 book,
                 search
-            })
+            })  
         })
         return
     }
@@ -31,18 +32,7 @@ router.get('/new-entry', (req, res) => {
         succesfull: 0
     })
 })
-router.post('/new-entry', upload.single('image'), async function (req, res) {
-    await bookController.Save(req, res, (err, book) => {
-        if (err) {
-            res.render('new-entry', {
-                succesfull: -1
-            })
-        }
-        res.render('new-entry', {
-            succesfull: 1
-        })
-    })
-})
+router.post('/new-entry', upload.single('image'), bookController.Save)
 router.get('/edit', async function (req, res) {
     let book, bookToEdit
     if (req.query.id) {
@@ -60,24 +50,7 @@ router.get('/edit', async function (req, res) {
         edit: 'disabled'
     })
 })
-router.post('/edit', upload.single('image'), async function (req, res) {
-    await bookController.Edit(req,res, async function (err, bookWanted) {
-        let book = await Book.find({}, (err, book) => {
-            if (err) { throw new Error(err) }
-        })
-        if (bookWanted.n == 0) {
-            res.render('edit', {
-                edit: -1,
-                book
-            })
-            return
-        }
-        res.render('edit', {
-            edit: 1,
-            book
-        })
-    })
-})
+router.post('/edit', upload.single('image'), bookController.Edit)
 router.get('/delete/:id', async function (req, res) {
     await bookController.Delete(req.params.id, (err, book) => {
         if (err) { throw new Error(err) }
@@ -136,4 +109,19 @@ router.get('/book/id/:id', async function (req, res) {
     })
 })
 
+router.get('/register',(req, res)=>{
+    res.render('signin')
+})
+
+router.post('/signup', (req, res)=>{
+    res.json('signup')
+})
+
+router.post('/signin', (req, res)=>{
+    res.json('signin')
+})
+
+router.get('/dashbord', (req, res)=>{
+    res.json('dashbord')
+})
 module.exports = router

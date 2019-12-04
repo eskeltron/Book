@@ -7,8 +7,7 @@ const bodyParser = require('body-parser')
 
 app.set('port', 5000) // Indico que el puerto será 5000
 app.set('views', path.join(__dirname, 'views')) // Le indico a express donde se encuentra la carpeta views
-app.set('view engine', 'ejs') // Lenguaje que se puede utilizar dentro de HTML, condicionales etc.
-
+app.set('view engine', 'ejs')  //Lenguaje que se puede utilizar dentro de HTML, condicionales etc.
 
 //Middlewares
 // Funciones que se ejecutan antes que lleguen a las rutas
