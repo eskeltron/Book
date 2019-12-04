@@ -1,4 +1,4 @@
-Book_project/node_modules
-Book_project/src/public/imgs
-Book_project/METAS.txt
-Book_project/config
+src/public/imgs
+node_modules
+METAS.txt
+config

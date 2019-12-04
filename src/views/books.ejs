@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/header %>
+    <title></title>
+</head>
+
+<body>
+    <% include partials/navigation %>
+    <div class="container pt-1 m-1">
+        <div class="row">
+            <% if(book.length == 0){%>
+            <h4 class="card-title m-5">No results were found.</h4>
+            <%}%>
+            <% book.forEach(function(current_book){%>
+            <div class="col">
+                <div class="card card-index">
+                    <img src="<%= current_book.image %>" class="card-img-top p-1" alt="Foto del libro"
+                        style="border-style: outset">
+                    <div class="card-body">
+                        <h4 class="card-title">Title: <%= current_book.title %></h4>
+                        <h5 class="card-subtitle mt-3">Author: <%= current_book.author %></h5>
+                        <p class="card-text mt-3 mb-0">Description: <%= current_book.description%></p>
+                        <span class="<%- current_book.status == 1 ? 'badge badge-success' : 'badge badge-warning' %>">
+                            <%- current_book.status == 1 ? 'Nuevo' : 'Usado' %>
+                        </span>
+                    </div>
+                    <div class="card-body p-0 pl-4 pb-2">
+                        <a href="#" class="card-link">Buy</a>
+                        <a href="book/id/<%= current_book.id%>" class="card-link">Consult</a>
+                    </div>
+                </div>
+            </div>
+            <%})%>
+        </div>
+    </div>
+
+</body>
+
+</html>
