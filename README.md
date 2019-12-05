@@ -1,10 +1,10 @@
 # Book_project
 "Mini proyecto" donde implemento todo lo aprendido.
 
-Ejs -> view engine,
-Bootstrap -> design,
+Ejs -> motor de plantilla,
+Bootstrap -> diseño de la página,
 Node -> backend,
-MongoDB -> bdd
+MongoDB -> base de datos
 
 Día a día actualizo este repositorio con cosas nuevas que voy implementando.
 
