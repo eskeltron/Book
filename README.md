@@ -2,6 +2,7 @@
 "Mini proyecto" donde implemento todo lo aprendido.
 
 Ejs -> view engine,
+Bootstrap -> design,
 Node -> backend,
 MongoDB -> bdd
 
