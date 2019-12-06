@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/header %>
+    <title>Register</title>
+</head>
+
+<body>
+    <% include partials/navigation %>
+    <div class="container p-4">
+        <form action="/signup" method="POST" class="card card-body" style="margin-left: 100px;
+        margin-right: 100px;">
+            <div style="text-align:center">
+                <h1 style="color:black">Sign up</h1>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" id="usernme" placeholder="Entry a username"
+                    required>
+                <label for="email" class="mt-2">E-mail</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="example@example.org"
+                    required>
+                <label for="username" class="mt-2">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Entry a password"
+                    required>
+                <label for="validatePassword" class="mt-2">Retype Password</label>
+                <input type="password" class="form-control" name="validatePassword" id="validatePassword"
+                    placeholder="Retype password" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 40%;
+            margin-right: 40%;">Sign up</button>
+        </form>
+        <%if(typeof err != 'undefined'){%>
+        <div class="alert alert-danger" role="alert">
+            <%= err.message %>
+        </div>
+        <%}%>
+    </div>
+</body>
+
+</html>

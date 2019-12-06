@@ -1,9 +1,11 @@
 <nav aria-label="Page navigation example" class="mt-2">
     <ul class="pagination mb-0">
         <li class="page-item"><a class="page-link" href="search?num=<%- search <= 1 ? 1 : search-1%>">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="search?num=1">1</a></li>
-        <li class="page-item"><a class="page-link" href="search?num=2">2</a></li>
-        <li class="page-item"><a class="page-link" href="search?num=3">3</a></li>
-        <li class="page-item"><a class="page-link" href="search?num=<%- search+1 %>">Next</a></li>
+        <%for(let i=search-3;i<=search+3;i++){%>
+        <%if(i>0 && i<=searchMax){%>
+        <li class="page-item"><a class="page-link" href="search?num=<%- i %>"><%= i %></a></li>
+        <%}}%>
+        <li class="page-item"><a class="page-link"
+                href="search?num=<%- search <= parseInt(searchMax) ? search+1 : search %>">Next</a></li>
     </ul>
 </nav>
