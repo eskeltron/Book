@@ -1,4 +1,3 @@
-# Book_project
 "Mini proyecto" donde implemento todo lo aprendido.
 
 Ejs -> motor de plantilla,
@@ -21,3 +20,4 @@ El proyecto "Book_Projects" consta de ser una página en donde, hay 3 funcionali
 Cabe aclarar que todo esto está relacionado, los libros se almacenan en una colección llamada "book", y se van guardando como documentos, a través de node renderizo con ejs, y este a su vez utiliza bootstrap para el aspecto de la página.
 
 A futuro planeo implementar muchas cosas más interesantes como JWT, algún simulador de pago, chat entre los usuarios y/o administradores.
+

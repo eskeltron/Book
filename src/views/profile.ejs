@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/header %>
+    <title>Sign up</title>
+</head>
+
+<body>
+    <% include partials/navigation %>
+    <div class="container p-4">
+        <h1>Profile</h1>
+        <div class="m-4 profile">
+            <%if (typeof user != 'undefined'){%>
+            <h2 class="profileInformation"><strong>Name</strong>:<%= user.username %></h2>
+            <h2 class="profileInformation"><strong>Email</strong>:<%= user.email %></h2>
+            <%}%>
+        </div>
+        <div class="purchasedBooks">
+
+        </div>
+    </div>
+</body>
+
+</html>

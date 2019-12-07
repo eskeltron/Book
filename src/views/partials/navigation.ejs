@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand">NikitoBooks</a>
+    <a class="navbar-brand" style="color:#FFD961">NikitoBooks</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -12,14 +12,16 @@
                 <a class="nav-link" href="/edit">Edit book</a>
             </li>
             <li class="nav-item active">
-                    <a class="nav-link" href="/search">Book search</a>
+                <a class="nav-link" href="/search">Book search</a>
             </li>
         </ul>
     </div>
     <%if(typeof search != 'undefined'){%>
     <form class="form-inline my-2 my-lg-0" action="/book">
         <input class="form-control mr-sm-2" type="text" placeholder="Search by title" name="search" required>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0 mr-3" type="submit">Search</button>
     </form>
     <%}%>
+        <a class="btn btn-outline-warning btn-lg" href="/signup">Signup</a>
+        <a class="btn btn-outline-warning ml-3 mr-3 btn-lg" href="/signin">Signin</a>
 </nav>

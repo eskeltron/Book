@@ -3,7 +3,10 @@ const router = Router()
 let Book = require('../models/book')
 const bookController = require('../models/book_controller')
 const upload = require('../libs/storage')
-const ejs = require('ejs')
+const userController = require('../models/user_controller')
+const jwt = require('jsonwebtoken')
+const User = require('../models/user')
+const verifyToken = require('../controllers/virifyToken')
 
 router.get('/', async function (req, res) {
     let consulta = req.query.search
@@ -14,7 +17,7 @@ router.get('/', async function (req, res) {
             res.render('index.ejs', {
                 book,
                 search
-            })  
+            })
         })
         return
     }
@@ -33,6 +36,7 @@ router.get('/new-entry', (req, res) => {
     })
 })
 router.post('/new-entry', upload.single('image'), bookController.Save)
+
 router.get('/edit', async function (req, res) {
     let book, bookToEdit
     if (req.query.id) {
@@ -59,25 +63,21 @@ router.get('/delete/:id', async function (req, res) {
 })
 router.get('/search', async function (req, res) {
     let search = req.query.num
-    // search = parseInt(search)
-    console.log(typeof search)
-    console.log(search)
     typeof search == 'undefined' || search == 'NaN' || search <= 0 ? search = 1 : search = parseInt(search)
     let cantTotal = await Book.estimatedDocumentCount({}, (err, number) => { if (err) { throw new Error(err) } })
-    console.log(cantTotal)
     let mostrarHasta = 3
     let searchMax = cantTotal / mostrarHasta
-    console.log(searchMax)
-    search >= searchMax ? search = parseInt(searchMax)+1 : ''
+    Number.isInteger(searchMax) ? '' : searchMax = parseInt(searchMax) + 1
+    search >= searchMax ? search = searchMax : ''
     let mostrarDesde = (search - 1) * 3
     cantTotal < mostrarHasta ? mostrarDesde = search - 1 : ''
     let book = await Book.find({}, (err, bookWanted) => { if (err) { throw new Error(err) } })
         .limit(mostrarHasta)
         .skip(mostrarDesde)
-    // search = parseInt(search)
     res.render('search', {
         book,
-        search
+        search,
+        searchMax
     })
 })
 router.get('/book', async function (req, res) {
@@ -86,7 +86,6 @@ router.get('/book', async function (req, res) {
     await bookController.ToListByTitle(bookTitle, (err, books) => {
         book = books
     })
-    console.log(book)
     let search = null
     res.render('books', {
         book,
@@ -95,33 +94,44 @@ router.get('/book', async function (req, res) {
 })
 router.get('/book/id/:id', async function (req, res) {
     let IDBook = req.params.id
-    console.log(IDBook)
     let book
     await bookController.WantedById(IDBook, (err, bookWanted) => {
         if (err) { throw new Error(err) }
         book = bookWanted
     })
     let search = null
-    console.log(book)
     res.render('book', {
         book,
         search
     })
 })
-
-router.get('/register',(req, res)=>{
+router.get('/signin', (req, res) => {
     res.render('signin')
 })
-
-router.post('/signup', (req, res)=>{
-    res.json('signup')
+router.post('/signin', async function (req, res) {
+    const { email, password } = req.body
+    const user = await User.findOne({ email: email })
+    if (!user) { return res.render('signin', { err: "The email is invalid" }) }
+    const validPassword = await user.validatePassword(password)
+    if (!validPassword) { return res.render('signin', { err: 'The password is invalid' }) }
+    const token = jwt.sign({id: user.id }, process.env.SECRET, {
+        expiresIn: "1h"
+    })
+    res.cookie('token',token)
+    res.redirect('profile')
 })
-
-router.post('/signin', (req, res)=>{
-    res.json('signin')
+router.get('/signup', (req, res) => {
+    res.render('signup')
 })
-
-router.get('/dashbord', (req, res)=>{
-    res.json('dashbord')
+router.post('/signup', userController.Save)
+router.get('/profile', verifyToken, async function (req, res) {
+    const user = await User.findOne({ id: req.userId }, { password: 0 })
+    console.log(user)
+    if (!user) {
+        return res.render('profile',{user:{username:'no token provided'}})
+    }
+    res.render('profile',{
+        user
+    })
 })
 module.exports = router
