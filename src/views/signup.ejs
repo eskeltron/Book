@@ -3,7 +3,7 @@
 
 <head>
     <% include partials/header %>
-    <title>Register</title>
+    <title>Sign up</title>
 </head>
 
 <body>
@@ -30,13 +30,21 @@
             </div>
             <button type="submit" class="btn btn-primary" style="margin-left: 40%;
             margin-right: 40%;">Sign up</button>
-        </form>
+            <%if(typeof succesfull != 'undefined'){%>
+            <div class="alert alert-success mt-2" role="alert">
+                <%= succesfull %>
+            </div>
+            <%}%>
         <%if(typeof err != 'undefined'){%>
-        <div class="alert alert-danger" role="alert">
-            <%= err.message %>
-        </div>
-        <%}%>
+            <div class="alert alert-danger mt-2" role="alert">
+                <%= err %>
+            </div>
+            <%}%>
+        </form>
     </div>
+    <script>
+        console.log('asd')
+    </script>
 </body>
 
 </html>

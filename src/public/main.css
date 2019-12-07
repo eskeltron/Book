@@ -46,3 +46,29 @@ body {
 h1{
     color:#FFD961;
 }
+.profile{
+    float: left; 
+    background-color: goldenrod;
+    padding: 20px;
+    width: 40%;
+}
+.purchasedBooks{
+    margin-left: 10px;
+    float: left;
+    border: solid 1px black;
+    background-color: gray;
+    border-radius: 55px;
+    width: 40%;
+}
+.profileInformation{
+    border: solid 1px black; 
+    background-color: gray; 
+    border-radius: 55px;
+    text-indent: 12px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+.profileInformation:first-child{
+    margin-bottom: 45px;
+}
