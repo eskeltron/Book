@@ -3,3 +3,6 @@ Cambios:
     Cambio general en todas las vistas de la página.
     Implementación de Json Web Token, vistas "Sign in" y "Sign up".
     Corrección en la lógica de la "navegación" de la página Search.
+2/1/2020
+Cambios:
+    Implementación final del sistema de registro/logeo.
