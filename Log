@@ -6,3 +6,4 @@ Cambios:
 2/1/2020
 Cambios:
     Implementación final del sistema de registro/logeo.
+    Arreglos varios, ahora al momento de editar un libro no es obligatorio elegir una imagen para el mismo, y en caso de no elegir una, quedará la que ya tenía.
