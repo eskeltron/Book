@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/header %>
+    <title>Home</title>
+</head>
+
+<body>
+    <% include partials/navigation %>
+    <div class="container p-3 ml-1">
+        <h1 class="d-inline mb-2 ">Available books</h1>
+        <% include partials/nav-search %>
+        <div class="row">
+            <% book.forEach(function(current_book){%>
+            <div class="col">
+                <div class="card card-index">
+                    <div class="card-title ml-2">
+                       <a href="/book/id/<%=current_book.id%>" style="text-decoration: none;"> <h2><%- current_book.title %> </h2> </a>
+                    </div>
+                    <div class="card-subtitle mb-2 ml-2 text-muted">
+                        <h3><%= current_book.author %></h3>
+                    </div>
+                    <div class="mb-2 ml-2">
+                            <span class="<%- current_book.status == 1 ? 'badge badge-success' : 'badge badge-warning' %>">
+                                <%- current_book.status == 1 ? 'Nuevo' : 'Usado' %>
+                            </span>
+                        </div>
+                    <img src="<%=current_book.image%>" alt="card-image-top" class="img-thumbnail portada" style="border-style: outset">
+                    <div class="card-body">
+                        <p><%= current_book.description %></p>
+                    </div>
+                    <%if(typeof userLog != 'undefined' && userLog.admin){%>
+                    <div class="card-footer">
+                        <a href="/edit?id=<%=current_book.id%>" class="btn btn-info">
+                            Edit
+                        </a>
+                        <a href="/delete/<%=current_book.id%>" class="btn btn-danger ml-3">
+                            Delete
+                        </a>
+                    </div>
+                    <%}%>
+                </div>
+            </div>
+            <%})%>
+        </div>
+        <% include partials/nav-search %>
+    </div>
+</body>
+
+</html>

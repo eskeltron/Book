@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/header %>
+    <title>Edit book</title>
+</head>
+<script src="../public/ejs.min.js"></script>
+<body>
+    <% include partials/navigation %>
+    <div class="container p-4">
+        <h1 class="d-inline">Edit book</h1>
+        <%if(Array.isArray(book)){%>
+        <form action="" id="form-Select" class="card card-body">
+            <div class="form-group">
+                <label for="edit">Book to edit:</label>
+                <select name="id" id="id" required>
+                    <%book.forEach(function(current_book,indx){%>
+                    <option value="<%=current_book.id%>" index="<%= indx %>">
+                        <%=current_book.title%>
+                    </option>
+                    <%})%>
+                </select>
+                <input type="submit" value="Select" class="btn btn-info" form="form-Select">
+            </div>
+            <%}%>
+            </form>
+            <% if(typeof bookToEdit != 'undefined'){ %>
+            <form method="POST" action="/edit" class="card card-body" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" value="<%= typeof bookToEdit != 'undefined'  ? bookToEdit.title : '' %>"
+                        class="form-control" name="title" id="title" placeholder="Entry a new title" autfocus required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" value="<%= typeof bookToEdit != 'undefined' ? bookToEdit.author : '' %>"
+                        class="form-control" name="author" id="author" placeholder="Author" required>
+                </div>
+                <input type="hidden" value="<%= typeof bookToEdit != 'undefined' ? bookToEdit.id : '' %>"
+                    class="form-control" name="id" id="id" required>
+                <div class="form-group" id="imagen">
+                    <label class="image">Select image</label>
+                    <div class="form-check form-check-inline" id="imageEdit">
+                        <input type="file" class="form-control-file" id="image" name="image" accept=".jpg, .png, .jpeg" required />    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" rows="3" class="form-control"
+                        placeholder="Description"><%=typeof bookToEdit != 'undefined' ? bookToEdit.description : '' %></textarea>
+                </div>
+                <input type="submit" value="Save book" class="btn btn-primary">
+                <%}%>
+            <% if (typeof succesfull != 'undefined') { %>
+                <div class="alert alert-success mt-3" role="alert">
+                    Book succesful edited.
+                </div>
+                <%}%>
+            <% if (typeof error != 'undefined') { %>
+                <div class="alert alert-danger mt-3" role="alert">
+                    Book edit failed.
+                </div>
+                <%}%>
+            </form>
+        </div>
+        <script></script>
+</body>
+
+</html>

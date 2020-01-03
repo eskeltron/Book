@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/header %>
+    <title></title>
+</head>
+
+<body>
+    <% include partials/navigation %>
+    <div class="container pt-1 m-1">
+        <div class="row">
+            <div class="col">
+                <div class="card card-index">
+                    <img src="<%= book.image %>" class="card-img-top p-1" alt="Foto del libro"
+                        style="border-style: outset">
+                    <div class="card-body">
+                        <h4 class="card-title">Title: <%= book.title %></h4>
+                        <h5 class="card-subtitle mt-3">Author: <%= book.author %></h5>
+                        <p class="card-text mt-3 mb-3">Description: <%= book.description%></p>
+                        <div class="mb-2 ml-2">
+                            <span class="<%- book.status == 1 ? 'badge badge-success' : 'badge badge-warning' %>">
+                                <%- book.status == 1 ? 'Nuevo' : 'Usado' %>
+                            </span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Buy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
