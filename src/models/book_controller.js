@@ -46,16 +46,27 @@ async function edit(req, res) {
         if (userLog.admin) {
             try {
                 const { title, author, id, description, status } = req.body
-                await eliminarFoto(id)
-                const { filename } = req.file
-                await Book.updateOne({ id }, {
-                    title,
-                    author,
-                    id,
-                    image: `http://${process.env.APP_HOST}:${process.env.APP_PORT}/public/${filename}`,
-                    description,
-                    status
-                })
+                console.log(req.file)
+                if (typeof req.file != 'undefined') {
+                    await eliminarFoto(id)
+                    const { filename } = req.file
+                    await Book.updateOne({ id }, {
+                        title,
+                        author,
+                        id,
+                        image: `http://${process.env.APP_HOST}:${process.env.APP_PORT}/public/${filename}`,
+                        description,
+                        status
+                    })
+                } else {
+                    await Book.updateOne({ id }, {
+                        title,
+                        author,
+                        id,
+                        description,
+                        status
+                    })
+                }
                 let book = await Book.find({}, (err, book) => {
                     if (err) { throw new Error(err) }
                 })
@@ -66,14 +77,7 @@ async function edit(req, res) {
                 })
             }
             catch (e) {
-                if (bookWanted.n == 0) {
-                    res.render('edit', {
-                        error: true,
-                        book,
-                        userLog
-                    })
-                    return
-                }
+                console.log(e)     
             }
         } else {
             res.redirect("/")

@@ -5,15 +5,15 @@ module.exports = async function getUser(req) {
         token,
         decodedToken
 
-        req.headers.cookie ? token=req.headers.cookie.split('=')[1] : ""
+    req.headers.cookie ? token = req.headers.cookie.split('=')[1] : ""
 
-        if(token){
-            await jwt.verify(token,process.env.SECRET, async (err, dToken) => {
-                if(typeof err != 'undefined'){
-                    decodedToken = dToken
-                    user = await User.findOne({id:decodedToken.id},{password:0})
-                }
-            })
-        }
+    if (token) {
+        await jwt.verify(token, process.env.SECRET, async (err, dToken) => {
+            if (typeof err != 'undefined' && typeof dToken != 'undefined') {
+                decodedToken = dToken
+                user = await User.findOne({ id: decodedToken.id }, { password: 0 })
+            }
+        })
+    }
     return user
 }

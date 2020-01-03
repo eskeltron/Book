@@ -92,21 +92,25 @@ router.get("/search", async function (req, res) {
     let search = req.query.num
     typeof search == "undefined" || search == "NaN" || search <= 0 ? search = 1 : search = parseInt(search)
     let cantTotal = await Book.estimatedDocumentCount({}, (err, number) => { err ? console.log('error') : "" })
-    let mostrarHasta = 3
-    let searchMax = cantTotal / mostrarHasta
-    Number.isInteger(searchMax) ? "" : searchMax = parseInt(searchMax) + 1
-    search >= searchMax ? search = searchMax : ""
-    let mostrarDesde = (search - 1) * 3
-    cantTotal < mostrarHasta ? mostrarDesde = search - 1 : ""
-    let book = await Book.find({}, (err, bookWanted) => { if (err) { throw new Error(err) } })
-        .limit(mostrarHasta)
-        .skip(mostrarDesde)
-    res.render("search", {
-        book,
-        search,
-        searchMax,
-        userLog
-    })
+    if (cantTotal > 0) {
+        let mostrarHasta = 3
+        let searchMax = cantTotal / mostrarHasta
+        Number.isInteger(searchMax) ? "" : searchMax = parseInt(searchMax) + 1
+        search >= searchMax ? search = searchMax : ""
+        let mostrarDesde = (search - 1) * 3
+        cantTotal < mostrarHasta ? mostrarDesde = search - 1 : ""
+        let book = await Book.find({}, (err, bookWanted) => { if (err) { throw new Error(err) } })
+            .limit(mostrarHasta)
+            .skip(mostrarDesde)
+        res.render("search", {
+            book,
+            search,
+            searchMax,
+            userLog
+        })
+    }else{
+        res.redirect("/")
+    }
 })
 router.get("/book", async function (req, res) {
     const userLog = await getUser(req)
