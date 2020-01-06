@@ -43,21 +43,21 @@ Te permite editar un libro, previamente seleccionando cuál editar, y vas a pode
 
 ![Edit](https://i.ibb.co/RNCSmY7/Edit-Book-2.jpg)
 
-### Eliminar libro 
+### Eliminar libro
+
 Elimina al libro del sistema completamente.
 
 ![Delete book](https://i.ibb.co/Wf24tyJ/Delete-Edit.jpg)
 
 ### Navigation  
+
 Es sólo una sección de la página donde podes ver los libros a través de una navegación de 3 en 3.
 
 ![Navigation](https://i.ibb.co/2n1zJZ1/Navigation.jpg)
 
-
 Por último, lleva un sistema de Login el cuál al registrarse encripta la contraseña con **bcrypt** para luego almacenarla en la base de datos.
 
 ![Register](https://i.ibb.co/FYQGJrS/Register.jpg)
-
 
 Al momento de logear, se utiliza **JWT** para la verificación, con una duración del token de 1 hora, **a través de Cookies**.
 
@@ -76,22 +76,18 @@ Para probarlo en tu computadora es sencillo, solamente necesitas tener instalado
 
 Una vez instalados, descargas el repositorio e inicias npm
 
-```
-    npm init -y
-```
+```npm init -y```
 Comenzará a instalar todas las dependencias. Una vez instaladas todas las dependencias, necesitamos poner en línea la base de datos, abrimos el mongo daemon
 
 ![MongoDaemon](https://i.ibb.co/0G7TCrS/MongoD.jpg)
 
 Una vez ejecutado, quedará abierto en una ventana CMD. ¡Listo! La base de datos ya está corriendo. Por default, viene establecida en "localhost:27017" (Que es justo como está configurado la página).
 
-¡Ahora sí!, no hace falta más nada. Solamente ir a la carpeta raíz del proyecto y ejecutar el siguiente comando con cmd 
-```
-    npm run dev
-```
+¡Ahora sí!, no hace falta más nada. Solamente ir a la carpeta raíz del proyecto y ejecutar el siguiente comando con cmd ```npm run dev```
 ¡Listo! La página está escuchando peticiones a través de **localhost:5000**.
 
-### IMPORTANTE 
+### IMPORTANTE
+
 Por default, cuando creamos un nuevo usuario este será un usuario común, la única forma de convertir esa cuenta en administrador es ejecutando un cliente de MongoDB y cambiando la propiedad **admin** de la cuenta a **true**, suelo realizar este paso a través del **MongoDBCompassCommunity**.
 
 (Programa que se instala automáticamente con MongoDB, es una interfaz gráfica que permite interactuar con tu base de datos muy intuitivamente sin comandos complejos).
@@ -101,10 +97,10 @@ Por default, cuando creamos un nuevo usuario este será un usuario común, la ú
 Una vez dentro del programa, se conectan a su DB,
 Books_Project -> users y ahí tienen una lista de los usuarios registrados, solamente hacen click en donde dice admin:**false**, lo cambian por **true** y listo.
 
-![](https://i.ibb.co/LzxYvKm/Mongo-DBCompass.jpg)
+![MongoDBCompassCommunity](https://i.ibb.co/LzxYvKm/Mongo-DBCompass.jpg)
 
 ¡Ahora sí!
 
-Ya puedes experimentar con la página y todas sus funcionalidades. Gracias por leer!
+Ya puedes experimentar con la página y todas sus funcionalidades. ¡Gracias por leer!
 
 Te dejo mi [Linkedin](https://www.linkedin.com/in/nicolásgomez/) Para cualquier consulta.
