@@ -1,20 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" style="color:#FFD961">NikitoBooks</a>
+    <a class="navbar-brand" style="color:#FFD961; font-size: 15px;">Project of books</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/" style="font-size: 13px;">Home</a>
             </li>
             <%if(typeof userLog != 'undefined' && userLog.admin){%>
             <li class="nav-item active">
-                <a class="nav-link" href="/new-entry">New book</a>
+                <a class="nav-link" href="/new-entry" style="font-size: 13px;">New book</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/edit">Edit book</a>
+                <a class="nav-link" href="/edit" style="font-size: 13px;">Edit book</a>
             </li>
             <%}%>
             <li class="nav-item active">
-                <a class="nav-link" href="/search">Navigation</a>
+                <a class="nav-link" href="/search" style="font-size: 13px;">Navigation</a>
             </li>
         </ul>
     </div>
@@ -25,9 +25,9 @@
     </form>
     <%}%>
     <%if(typeof userLog != 'undefined' && userLog){%>
-        <a class="btn btn-outline-warning ml-3 mr-3 btn-lg" href="/profile/<%=userLog.username%>">Profile</a>
+        <a class="btn btn-outline-warning btn-lg botones" href="/profile/<%=userLog.username%>">Profile</a>
     <%}else{%>
-        <a class="btn btn-outline-warning btn-lg" href="/signup">Signup</a>
-        <a class="btn btn-outline-warning ml-3 mr-3 btn-lg" href="/signin">Signin</a>
+        <a class="btn btn-outline-warning btn-lg botones" href="/signup">Signup</a>
+        <a class="btn btn-outline-warning ml-3 mr-3 btn-lg botones" href="/signin">Signin</a>
     <%}%>
 </nav>

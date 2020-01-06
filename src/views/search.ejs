@@ -3,18 +3,18 @@
 
 <head>
     <% include partials/header %>
-    <title>Home</title>
+    <title>Navigation</title>
 </head>
 
 <body>
     <% include partials/navigation %>
     <div class="container p-3 ml-1">
-        <h1 class="d-inline mb-2 ">Available books</h1>
+        <h1 class="d-block mb-2 ">Available books</h1>
         <% include partials/nav-search %>
-        <div class="row">
+        <div class="row contenedor">
             <% book.forEach(function(current_book){%>
-            <div class="col">
-                <div class="card card-index">
+            <div class="libros">
+                <div>
                     <div class="card-title ml-2">
                        <a href="/book/id/<%=current_book.id%>" style="text-decoration: none;"> <h2><%- current_book.title %> </h2> </a>
                     </div>

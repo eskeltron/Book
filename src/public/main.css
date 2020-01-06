@@ -4,8 +4,12 @@ body {
     -moz-background-size: cover; 
     background-size: cover; 
     color: #333; 
-    line-height: 1; 
 }
+.botones{
+    padding: 3px 5px;
+    font-size: 18px;
+}
+
 .card-index {
     width: 300px;
     margin-top: 15px;
@@ -58,4 +62,32 @@ h1{
     background-color: gray;
     border-radius: 55px;
     width: 40%;
+}
+.contenedor{
+    width: 100%;
+}
+.libros{
+    float:left;
+    margin: 10px 0px 0px 10px;
+    max-width: 260px;
+    max-height: 700px;
+    border-radius: 5px;
+    background-color:whitesmoke;
+}
+.cuerpoLibro{
+    display:block;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+.pieLibro{
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+img{
+    max-width: 270px;
+    max-height: 400px;
+}
+.formularios{
+    max-width: 700px;
+    margin:auto;
 }

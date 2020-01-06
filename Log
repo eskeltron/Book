@@ -1,9 +1,12 @@
 6/12/2019
 Cambios:
-    Cambio general en todas las vistas de la página.
-    Implementación de Json Web Token, vistas "Sign in" y "Sign up".
-    Corrección en la lógica de la "navegación" de la página Search.
+    - Cambio general en todas las vistas de la página.
+    - Implementación de Json Web Token, vistas "Sign in" y "Sign up".
+    - Corrección en la lógica de la "navegación" de la página Search.
 2/1/2020
 Cambios:
-    Implementación final del sistema de registro/logeo.
-    Arreglos varios, ahora al momento de editar un libro no es obligatorio elegir una imagen para el mismo, y en caso de no elegir una, quedará la que ya tenía.
+    - Implementación final del sistema de registro/logeo.
+    - Arreglos varios, ahora al momento de editar un libro no es obligatorio elegir una imagen para el mismo, y en caso de no elegir una, quedará la que ya tenía.
+6/2/2020
+    - Modificación de las vistas, cambios en el código EJS/HTML y CSS.
+    - Modificación del README.md.

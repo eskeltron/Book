@@ -141,11 +141,11 @@ router.get("/book/id/:id", async function (req, res) {
         userLog
     })
 })
-router.get("/signin", async (req, res) => {
+router.get("/signin",async (req, res) => {
     const logUser = await getUser(req)
     logUser ? res.redirect(`/profile/${logUser.username}`) : res.render("signin")
 })
-router.post("/signin", async function (req, res) {
+router.post("/signin",async function (req, res) {
     let token = verifyToken(req, res)
     if (token != 1 && token != 0) {
         const { email, password } = req.body
