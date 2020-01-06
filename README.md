@@ -1,5 +1,10 @@
 # Project of books
 
+![GitHub](https://img.shields.io/github/license/eskeltron/Book)
+![GitHub last commit](https://img.shields.io/github/last-commit/eskeltron/Book)
+![GitHub repo size](https://img.shields.io/github/repo-size/eskeltron/Book)
+![GitHub followers](https://img.shields.io/github/followers/eskeltron?style=social)
+
 ## Presentación
 
 Hola! Este es mi primer proyecto, es un repositorio donde subo las prácticas de las tecnologías que voy aprendiendo.
