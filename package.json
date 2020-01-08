@@ -22,5 +22,13 @@
     "nodemon": "^2.0.0",
     "uuid": "^3.3.3"
   },
-  "description": ""
+  "description": "![GitHub](https://img.shields.io/github/license/eskeltron/Book)\r ![GitHub last commit](https://img.shields.io/github/last-commit/eskeltron/Book)\r ![GitHub repo size](https://img.shields.io/github/repo-size/eskeltron/Book)\r ![GitHub followers](https://img.shields.io/github/followers/eskeltron?style=social)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eskeltron/Book.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eskeltron/Book/issues"
+  },
+  "homepage": "https://github.com/eskeltron/Book#readme"
 }

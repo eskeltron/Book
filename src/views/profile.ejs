@@ -9,29 +9,41 @@
 <body>
     <% include partials/navigation %>
     <div class="container p-4">
-
         <div class="card">
             <div class="card-header" style="background-color: rgba(163, 163, 163, 0.700)">
                 <h2>Profile</h2>
             </div>
             <div class="card-body" style="background-color: rgba(163, 163, 163, 0.500)">
-                <%if (typeof user != 'undefined'){%>
-                <h3><strong>Name</strong>:<br /> </h3>
-                <h4><%= user.username %></h4>
-                <h3><strong>Email</strong>:<br /></h3>
-                <h4><%= user.email %></h4>
-                <%}%>
+                <div class="userContain">
+                    <%if (typeof user != 'undefined'){%>
+                    <h3><strong>Name</strong>:<br /> </h3>
+                    <h4><%= user.username %></h4>
+                    <h3><strong>Email</strong>:<br /></h3>
+                    <h4><%= user.email %></h4>
+                    <%}%>
+                </div>
                 <%if (userLog){%>
-                <form action="/logout" method="POST">
-                    <button type="submit" class="btn btn-outline-dark">Logout</button>
-                </form>
-                <%}%>
-            </div>
-        <%if (typeof purchasedBooks != 'undefined'){%>
-                <div class="purchasedBooks">
-
+                <div class="footerProfile">
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="btn btn-outline-dark">Logout</button>
+                    </form>
+                    <%if (userLog.admin){%>
+                    <form action="/userTransform" method="POST">
+                        <button type="submit" class="btn btn-outline-dark">Transform User</button>
+                    </form>
+                    <%}else{%>
+                    <form action="/userTransform" method="POST">
+                        <button type="submit" class="btn btn-outline-dark">Transform Administrator</button>
+                    </form>
+                    <%}%>
                 </div>
                 <%}%>
+                </div>
+                <%if (typeof purchasedBooks != 'undefined'){%>
+                <div class="purchasedBooks">
+                </div>
+                <%}%>
+            </div>
     </div>
 </body>
 

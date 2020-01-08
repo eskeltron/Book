@@ -7,6 +7,9 @@ Cambios:
 Cambios:
     - Implementación final del sistema de registro/logeo.
     - Arreglos varios, ahora al momento de editar un libro no es obligatorio elegir una imagen para el mismo, y en caso de no elegir una, quedará la que ya tenía.
-6/2/2020
+6/1/2020
     - Modificación de las vistas, cambios en el código EJS/HTML y CSS.
     - Modificación del README.md.
+8/1/2020
+    - Implementación de botones en la vista Profile, si el usuario que está logeado es administrador le aparecera "Transform User", si es usuario, "Transform Administrator". Ahora cuando se quiera seleccionar alguna cuenta como Administrador no hace falta hacerlo a través de un Shell de mongo!
+    

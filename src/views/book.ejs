@@ -17,13 +17,13 @@
                     <div class="card-body">
                         <h4 class="card-title">Title: <%= book.title %></h4>
                         <h5 class="card-subtitle mt-3">Author: <%= book.author %></h5>
-                        <p class="card-text mt-3 mb-3">Description: <%= book.description%></p>
-                        <div class="mb-2 ml-2">
-                            <span class="<%- book.status == 1 ? 'badge badge-success' : 'badge badge-warning' %>">
-                                <%- book.status == 1 ? 'Nuevo' : 'Usado' %>
-                            </span>
+                        <p class="card-text mt-3 mb-2">Description: <%= book.description%></p>
+                        <span class="<%- book.status == 1 ? 'badge badge-success' : 'badge badge-warning' %>">
+                            <%- book.status == 1 ? 'Nuevo' : 'Usado' %>
+                        </span>
+                        <div class="mt-2">
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
-                        <a href="#" class="btn btn-primary">Buy</a>
                     </div>
                 </div>
             </div>

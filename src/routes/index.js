@@ -168,6 +168,7 @@ router.get("/signup", async (req, res) => {
 router.post("/signup", userController.Save)
 router.get("/profile/:username", async function (req, res) {
     const userLog = await getUser(req)
+    console.log(userLog)
     let user = await User.findOne({ username: req.params.username }, { password: 0 })
     if (user != null) {
         if (typeof userLog != 'undefined') {
@@ -190,8 +191,18 @@ router.get("/profile/:username", async function (req, res) {
         userLog
     })
 })
-router.post("/logout", async (req, res) => {
+router.post("/logout",(req, res) => {
     res.clearCookie("token")
     res.redirect("/signin")
 })
+router.post("/userTransform", async (req, res)=>{
+    let userLog = await getUser(req)
+    if( userLog != null){
+        await User.updateOne({username:userLog.username},{$set:{admin:!userLog.admin}})
+        res.redirect(`/profile/${userLog.username}`)
+    }else{
+        res.redirect(`/profile/${userLog.username}`)
+    }
+})
+
 module.exports = router

@@ -9,6 +9,15 @@ body {
     padding: 3px 5px;
     font-size: 18px;
 }
+.userContain{
+    display:inline-block;
+    flex:left;
+    height: 100%;
+    width: 50%;
+}
+.footerProfile form{
+    display:inline-block;    
+}
 
 .card-index {
     width: 300px;
