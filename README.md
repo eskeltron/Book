@@ -42,6 +42,8 @@ Datos que posee un libro:
     - Una imagén  
 La imagén se buscará dentro de tu computadora y cuando subas el libro al servidor, esta imagen se guarda automáticamente del lado del servidor, y una descripción del libro.
 
+![New Book](https://i.ibb.co/TwngSFj/New-Book.jpg)
+
 ### Editar un libro  
 
 Te permite editar un libro, previamente seleccionando cuál editar, y vas a poder modificar cualquiera de sus propiedades. No es necesario que vuelvas a elegir una imagén, si no seleccionas nada quedará la misma que tenía antes.
@@ -70,7 +72,7 @@ Al momento de logear, se utiliza **JWT** para la verificación, con una duració
 
 Profile y Cookie almacenada correctamente. También, el usuario "eskeltron" es administrador, por eso, él puede editar y subir nuevos libros. (Observar la barra de navegación).
 
-![Profile](https://i.ibb.co/WfYmNY9/Profile.jpg)
+![Profile](https://i.ibb.co/0m3nqgC/Profile.png)
 
 ## Como probarlo en tu computadora
 
@@ -93,16 +95,9 @@ Una vez ejecutado, quedará abierto en una ventana CMD. ¡Listo! La base de dato
 
 ### IMPORTANTE
 
-Por default, cuando creamos un nuevo usuario este será un usuario común, la única forma de convertir esa cuenta en administrador es ejecutando un cliente de MongoDB y cambiando la propiedad **admin** de la cuenta a **true**, suelo realizar este paso a través del **MongoDBCompassCommunity**.
+Por default, cuando creamos un usuario este se establece en la base de datos como usuario en si, para poder darle permisos de administrador hay un botón en el perfil para poder hacerlo. Primero se logean, van a su perfil y ahí aparece el botón.
 
-(Programa que se instala automáticamente con MongoDB, es una interfaz gráfica que permite interactuar con tu base de datos muy intuitivamente sin comandos complejos).
-
-![MongoDBCompassCommunity](https://i.ibb.co/56WXzrZ/Community.jpg)
-
-Una vez dentro del programa, se conectan a su DB,
-Books_Project -> users y ahí tienen una lista de los usuarios registrados, solamente hacen click en donde dice admin:**false**, lo cambian por **true** y listo.
-
-![MongoDBCompassCommunity](https://i.ibb.co/LzxYvKm/Mongo-DBCompass.jpg)
+![Profile_two](https://i.ibb.co/1G05bxv/Profile-two.png)
 
 ¡Ahora sí!
 
