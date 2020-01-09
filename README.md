@@ -72,7 +72,7 @@ Al momento de logear, se utiliza **JWT** para la verificación, con una duració
 
 Profile y Cookie almacenada correctamente. También, el usuario "eskeltron" es administrador, por eso, él puede editar y subir nuevos libros. (Observar la barra de navegación).
 
-![Profile](https://i.ibb.co/0m3nqgC/Profile.png)
+![Profile](https://i.ibb.co/5x7dTjM/profile.png)
 
 ## Como probarlo en tu computadora
 
